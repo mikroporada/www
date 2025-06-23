@@ -142,6 +142,108 @@ make test
 make docs
 ```
 
+## 🚀 Deployment
+
+### Local Development
+
+1. Build containers:
+```bash
+make build
+```
+
+2. Start services:
+```bash
+make start
+```
+
+3. Access application:
+```
+http://localhost
+```
+
+### Production Deployment
+
+1. Build production images:
+```bash
+make build
+```
+
+2. Tag and push images:
+```bash
+make push
+```
+
+3. Deploy to production:
+```bash
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+### Environment Variables
+
+Create a `.env` file with:
+```
+OLLAMA_MODEL=llama2
+DB_HOST=db
+DB_USER=root
+DB_PASSWORD=password
+DB_NAME=legatai
+```
+
+## 📊 Monitoring
+
+- Container logs: `docker-compose logs -f`
+- Service health: `http://localhost/api/health`
+- Database status: `mysql -h db -u root -p`
+
+## 🛠️ Maintenance
+
+### Backup
+```bash
+# Backup database
+docker-compose exec db sh -c 'exec mysqldump -u root --password=password legatai > /backup/legatai.sql'
+
+# Backup PDFs
+docker cp llm_service:/app/tmp/ ./backup/pdfs/
+```
+
+### Restore
+```bash
+# Restore database
+docker-compose exec db sh -c 'exec mysql -u root --password=password legatai < /backup/legatai.sql'
+
+# Restore PDFs
+docker cp ./backup/pdfs/ llm_service:/app/tmp/
+```
+
+### Cleanup
+```bash
+make clean
+```
+
+## 🚨 Troubleshooting
+
+### Common Issues
+
+1. Service not starting:
+```bash
+docker-compose logs
+```
+
+2. Database connection:
+```bash
+docker-compose exec db mysql -u root -p
+```
+
+3. Missing dependencies:
+```bash
+composer install
+```
+
+4. Permission issues:
+```bash
+docker-compose exec legatai_php chown -R www-data:www-data /var/www/html
+```
+
 ## 📚 Documentation
 
 - API documentation: `docs/api/`
