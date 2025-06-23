@@ -17,9 +17,9 @@ class TestChatFunctionality:
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
         
-        # Use specific ChromeDriver version that matches Chrome 137
+        # Use ChromeDriver manager to get the appropriate version
         self.driver = webdriver.Chrome(
-            service=ChromeService(ChromeDriverManager(version='114.0.5735.90').install()),
+            service=ChromeService(ChromeDriverManager().install()),
             options=chrome_options
         )
         self.driver.implicitly_wait(10)
