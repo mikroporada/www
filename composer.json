@@ -7,11 +7,11 @@
         "slim/slim": "^4.11",
         "slim/psr7": "^1.6",
         "slim/php-view": "^3.2",
-        "php-di/php-di": "^7.1",
+        "php-di/php-di": "^7.0",
         "guzzlehttp/guzzle": "^7.8",
         "dompdf/dompdf": "^2.0",
-        "phpdocumentor/phpdocumentor": "^4.0",
-        "phpunit/phpunit": "^10.0",
+        "phpdocumentor/phpdocumentor": "^3.3",
+        "phpunit/phpunit": "^9.5",
         "vlucas/phpdotenv": "^5.5"
     },
     "autoload": {
@@ -23,5 +23,8 @@
         "test": "phpunit",
         "docs": "phpdoc",
         "start": "php -S localhost:8080 -t public"
+    },
+    "config": {
+        "platform-check": false
     }
 }
