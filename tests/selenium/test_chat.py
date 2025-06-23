@@ -4,23 +4,21 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.chrome.options import Options
+from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
 class TestChatFunctionality:
     @pytest.fixture(autouse=True)
     def setup(self):
-        # Setup Chrome WebDriver with options
-        chrome_options = Options()
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--no-sandbox')
-        chrome_options.add_argument('--disable-dev-shm-usage')
+        # Setup Firefox WebDriver with options
+        firefox_options = FirefoxOptions()
+        firefox_options.add_argument('--headless')
         
-        # Use ChromeDriver manager to get the appropriate version
-        self.driver = webdriver.Chrome(
-            service=ChromeService(ChromeDriverManager().install()),
-            options=chrome_options
+        # Use GeckoDriver manager to get the appropriate version
+        self.driver = webdriver.Firefox(
+            service=FirefoxService(GeckoDriverManager().install()),
+            options=firefox_options
         )
         self.driver.implicitly_wait(10)
         self.base_url = "https://porada.sapletta.pl"
