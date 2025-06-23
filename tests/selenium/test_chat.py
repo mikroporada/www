@@ -29,11 +29,32 @@ class TestChatFunctionality:
 
     def test_send_message(self):
         """Test sending a message in the chat"""
-        self.driver.get(f"{self.base_url}/chat.html")
+        url = f"{self.base_url}/chat.html"
+        print(f"\nTesting URL: {url}")
+        self.driver.get(url)
         
-        # Find and interact with chat elements
-        chat_input = self.driver.find_element(By.ID, "chat-input")
-        send_button = self.driver.find_element(By.ID, "send-button")
+        # Print page title and current URL for debugging
+        print(f"Page title: {self.driver.title}")
+        print(f"Current URL: {self.driver.current_url}")
+        
+        # Print page source for debugging
+        print("\nPage source (first 1000 chars):")
+        print(self.driver.page_source[:1000])
+        
+        # Try to find elements with a wait
+        wait = WebDriverWait(self.driver, 10)
+        try:
+            chat_input = wait.until(EC.presence_of_element_located((By.ID, "chat-input")))
+            send_button = wait.until(EC.element_to_be_clickable((By.ID, "send-button")))
+            print("Found chat input and send button")
+        except Exception as e:
+            print(f"Error finding elements: {str(e)}")
+            # Try to find any input elements
+            print("\nAvailable input elements:")
+            inputs = self.driver.find_elements(By.TAG_NAME, "input")
+            for i, input_elem in enumerate(inputs):
+                print(f"Input {i+1}: id='{input_elem.get_attribute('id')}', name='{input_elem.get_attribute('name')}', type='{input_elem.get_attribute('type')}'")
+            raise
         
         # Send a test message
         test_message = "Cześć, to jest test wiadomości"
@@ -80,7 +101,14 @@ class TestChatFunctionality:
 
     def test_500_error(self):
         """Test that the result.php endpoint doesn't return 500 error"""
-        self.driver.get(f"{self.base_url}/result.php")
+        url = f"{self.base_url}/result.php"
+        print(f"\nTesting URL: {url}")
+        self.driver.get(url)
+        
+        # Print page title and current URL for debugging
+        print(f"Page title: {self.driver.title}")
+        print(f"Current URL: {self.driver.current_url}")
         
         # Check for 500 error
         assert "500" not in self.driver.page_source, "500 error found on result.php"
+        print("No 500 error detected on result.php")

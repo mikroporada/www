@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Chat Page</title>
+    <style>
+        .chat-container {
+            height: 400px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+        .user {
+            background-color: #e3f2fd;
+            margin-left: auto;
+        }
+        .bot {
+            background-color: #f5f5f5;
+        }
+        #chat-input {
+            width: 80%;
+            padding: 10px;
+            margin-right: 10px;
+        }
+        #html-editor {
+            width: 100%;
+            height: 200px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test Chat Page</h1>
+        <div class="chat-container" id="chat-container"></div>
+        <div class="input-group">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-button">Send</button>
+        </div>
+        <div>
+            <h3>HTML Editor:</h3>
+            <textarea id="html-editor"></textarea>
+        </div>
+        <button id="generate-pdf">Generate PDF</button>
+    </div>
+    <script>
+        // Simple mock for testing
+        document.getElementById('send-button').addEventListener('click', function() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (message) {
+                // Add user message
+                addMessage('user', message);
+                // Simulate bot response
+                setTimeout(() => {
+                    addMessage('bot', 'This is a test response to: ' + message);
+                    // Update HTML editor
+                    document.getElementById('html-editor').value += 'User: ' + message + '\nBot: Response to: ' + message + '\n';
+                }, 500);
+                input.value = '';
+            }
+        });
+
+        document.getElementById('generate-pdf').addEventListener('click', function() {
+            addMessage('info', 'PDF generated successfully!');
+        });
+
+        function addMessage(type, text) {
+            const container = document.getElementById('chat-container');
+            const message = document.createElement('div');
+            message.className = `message ${type}`;
+            message.textContent = text;
+            container.appendChild(message);
+            container.scrollTop = container.scrollHeight;
+        }
+    </script>
+</body>
+</html>
