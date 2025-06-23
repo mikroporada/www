@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  legatai:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    container_name: legatai_php
+    restart: unless-stopped
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: legatai
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  db_data:
