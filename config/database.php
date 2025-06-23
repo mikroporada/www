@@ -1,7 +1,7 @@
 <?php
 return [
     'host' => 'db',
-    'dbname' => 'legatai',
+    'dbname' => 'mikroporada',
     'user' => 'root',
     'password' => 'password',
     'charset' => 'utf8mb4'

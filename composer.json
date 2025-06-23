@@ -1,13 +1,18 @@
 {
     "name": "mikroporada/www",
-    "description": "Legat.ai - AI-Powered Legal Assistant",
+    "description": "mikroporada.pl - AI-Powered Legal Assistant",
     "type": "project",
     "require": {
         "php": ">=8.1",
+        "slim/slim": "^4.11",
+        "slim/psr7": "^1.6",
+        "slim/php-view": "^3.2",
+        "php-di/php-di": "^7.1",
         "guzzlehttp/guzzle": "^7.8",
         "dompdf/dompdf": "^2.0",
         "phpdocumentor/phpdocumentor": "^4.0",
-        "phpunit/phpunit": "^10.0"
+        "phpunit/phpunit": "^10.0",
+        "vlucas/phpdotenv": "^5.5"
     },
     "autoload": {
         "psr-4": {
@@ -16,6 +21,7 @@
     },
     "scripts": {
         "test": "phpunit",
-        "docs": "phpdoc"
+        "docs": "phpdoc",
+        "start": "php -S localhost:8080 -t public"
     }
 }

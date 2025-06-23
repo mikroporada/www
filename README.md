@@ -1,9 +1,9 @@
 # www
 
 
-# Legat.ai – Dynamiczna Strona Prawnicza w PHP
+# mikroporada.pl – Dynamiczna Strona Prawnicza w PHP
 
-**Legat.ai** to prosty system oparty na PHP, który pomaga użytkownikom otrzymywać szybką pomoc prawną w reakcji na różne problemy, takie jak mandaty, defamacje online czy wezwania sądowe.
+**mikroporada.pl** to prosty system oparty na PHP, który pomaga użytkownikom otrzymywać szybką pomoc prawną w reakcji na różne problemy, takie jak mandaty, defamacje online czy wezwania sądowe.
 
 ---
 
@@ -32,20 +32,22 @@ cd www
 ```
 
 ```
-legat-ai/
-│
-├── index.php
-├── result.php
-├── templates/
-│   ├── header.php
-│   └── footer.php
-├── reports/
-│   └── sample-report.pdf
-├── styles.css
-├── generate_structure.php
-├── README.md             ← Dokumentacja
-├── Dockerfile            ← Definicja obrazu Docker
-└── docker-compose.yml    ← Konfiguracja usług
+www/
+├── src/                 # PHP source code
+│   ├── LLMService.php   # LLM integration service
+│   └── Controllers/     # Application controllers
+├── public/              # Web accessible files
+│   ├── index.php        # Entry point
+│   └── assets/          # CSS, JS, images
+├── storage/             # Generated files
+│   └── pdfs/           # Generated PDF reports
+├── templates/           # View templates
+├── tests/              # Unit and integration tests
+├── docs/               # API documentation
+├── composer.json       # PHP dependencies
+├── Makefile            # Project commands
+├── docker-compose.yml  # Service configuration
+└── README.md           # Project documentation
 ```
 
 ---
@@ -53,7 +55,7 @@ legat-ai/
 
 
 
-# MVP for **Legat.ai** – AI-Powered Legal Assistant for Social Media Users
+# MVP for **mikroporada.pl** – AI-Powered Legal Assistant for Social Media Users
 
 The goal of this MVP is to validate the core value proposition: delivering fast, affordable, and personalized legal help via targeted social media ads. The MVP will be built using no-code tools to minimize development time and cost while testing product-market fit.
 
@@ -88,7 +90,64 @@ The goal of this MVP is to validate the core value proposition: delivering fast,
 
 ---
 
-## 🛠️ Step-by-Step MVP Development Plan
+## 🛠️ Project Structure
+
+### Core Components
+
+1. **LLM Integration**
+   - Real-time chat with LLM models
+   - PDF generation from HTML
+   - Docker-based deployment
+
+2. **Frontend**
+   - Modern UI with real-time chat
+   - HTML preview of generated content
+   - PDF viewer integration
+
+3. **Backend**
+   - PHP-based API
+   - Session management
+   - Document generation
+
+### Technical Stack
+
+- **Backend**: PHP 8.1+
+- **Database**: MySQL 8.0
+- **LLM**: Ollama with custom models
+- **PDF Generation**: DomPDF
+- **Containerization**: Docker
+- **Documentation**: phpDocumentor
+- **Testing**: PHPUnit
+
+## 🚀 Development Setup
+
+1. Install dependencies:
+```bash
+composer install
+```
+
+2. Build and start containers:
+```bash
+make build
+make start
+```
+
+3. Run tests:
+```bash
+make test
+```
+
+4. Generate documentation:
+```bash
+make docs
+```
+
+## 📚 Documentation
+
+- API documentation: `docs/api/`
+- Architecture: `docs/architecture.md`
+- Development guide: `docs/development.md`
+- Testing guide: `docs/testing.md`
 
 ### **Phase 1: Content Creation (Week 1)**
 
@@ -158,7 +217,7 @@ The goal of this MVP is to validate the core value proposition: delivering fast,
   - Keywords: “legal”, “fines”, “lawsuit”, “DMCA”, “defamation”, “court”
 
 #### ✅ Link Ads to the Quiz
-- Example URL: `https://legatai.typeform.com/legalhelp`
+- Example URL: `https://mikroporada.typeform.com/legalhelp`
 
 ---
 
@@ -260,9 +319,9 @@ Poniżej znajdziesz **pełną, uaktualnioną wersję pliku `README.md`**, która
 
 ---
 
-# Legat.ai – Dynamiczna Strona Prawnicza w PHP
+# mikroporada.pl – Dynamiczna Strona Prawnicza w PHP
 
-**Legat.ai** to prosty system oparty na PHP, który pomaga użytkownikom otrzymywać szybką pomoc prawną w reakcji na różne problemy, takie jak mandaty, defamacje online czy wezwania sądowe. Projekt jest przeznaczony do dalszej rozbudowy jako MVP dla startupu oferującego jednorazową pomoc prawną dostarczaną przez reklamy społecznościowe (np. Facebook, TikTok).
+**mikroporada.pl** to prosty system oparty na PHP, który pomaga użytkownikom otrzymywać szybką pomoc prawną w reakcji na różne problemy, takie jak mandaty, defamacje online czy wezwania sądowe. Projekt jest przeznaczony do dalszej rozbudowy jako MVP dla startupu oferującego jednorazową pomoc prawną dostarczaną przez reklamy społecznościowe (np. Facebook, TikTok).
 
 ---
 
@@ -291,11 +350,11 @@ Użytkownik wybiera swój problem prawny, a aplikacja generuje zalecenia i rapor
     - PHP 8.0+
     - Opcjonalnie: MySQL
 
-2. Skopiuj pliki do katalogu serwera (np. `/htdocs/legat-ai` w XAMPP).
+2. Skopiuj pliki do katalogu serwera (np. `/htdocs/mikroporada` w XAMPP).
 
 3. Uruchom serwer i otwórz:
    ```
-   http://localhost/legat-ai/index.php
+   http://localhost/mikroporada/index.php
    ```
 
 4. Wybierz problem prawny → zobacz rozwiązanie → pobierz raport.
@@ -306,8 +365,8 @@ Użytkownik wybiera swój problem prawny, a aplikacja generuje zalecenia i rapor
 
 1. Sklonuj repozytorium:
 ```bash
-git clone https://github.com/twoja-nazwa/legat-ai.git
-cd legat-ai
+git clone https://github.com/mikroporada/www.git
+cd www
 ```
 
 2. Uruchom kontener:
@@ -413,7 +472,7 @@ Napisz!
 ---
 
 💡 **Powodzenia z budowaniem swojego MVP!**  
-Legat.ai to pierwszy krok do szybkiej, skalowalnej usługi prawnej opartej na technologii i psychologii strachu – idealnej do promocji przez social media.
+mikroporada.pl to pierwszy krok do szybkiej, skalowalnej usługi prawnej opartej na technologii i psychologii strachu – idealnej do promocji przez social media.
 
 Chcesz:
 ✅ gotowy `.zip` z tym wszystkim?  

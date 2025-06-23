@@ -53,9 +53,9 @@ try {
             $message .= "Typ problemu: " . ucfirst($payment['issue_type']) . "\n";
             $message .= "Kwota: " . $payment['amount'] . " PLN\n\n";
             $message .= "Dokumenty premium są już dostępne w sekcji Twojego konta.\n\n";
-            $message .= "Legat.ai Team";
+            $message .= "mikroporada.pl Team";
             
-            $headers = "From: no-reply@legat.ai\r\n";
+            $headers = "From: no-reply@mikroporada.ai\r\n";
             mail($to, $subject, $message, $headers);
         }
     }
