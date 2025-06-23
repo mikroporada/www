@@ -15,17 +15,17 @@ restart: stop start
 # Run tests
 TEST_COMMAND="composer run test"
 test:
-	docker-compose exec mikroporada_php sh -c "${TEST_COMMAND}"
+	docker-compose exec legatai_php sh -c "${TEST_COMMAND}"
 
 # Generate documentation
 docs:
 	composer install
-	docker-compose exec mikroporada_php sh -c "php -r 'require __DIR__ . "/vendor/autoload.php"; (new \phpDocumentor\Application())->run();'"
+	docker-compose exec legatai_php sh -c "php -r 'require __DIR__ . \"/vendor/autoload.php\"; (new \\phpDocumentor\\Application())->run();'"
 
 # Push containers to registry
 push:
 	docker-compose build
-	docker tag mikroporada_php:latest mikroporada/www:latest
+	docker tag legatai:latest mikroporada/www:latest
 	docker push mikroporada/www:latest
 
 # Clean up
