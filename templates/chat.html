@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat LLM</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .chat-container {
+            height: 600px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+        .user {
+            background-color: #e3f2fd;
+            margin-left: auto;
+        }
+        .bot {
+            background-color: #f5f5f5;
+        }
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        .info {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        #chat-input {
+            width: 80%;
+            padding: 10px;
+            margin-right: 10px;
+        }
+        #html-editor {
+            width: 100%;
+            height: 300px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="chat-container" id="chat-container"></div>
+        <div class="input-group">
+            <input type="text" id="chat-input" placeholder="Napisz wiadomość...">
+            <button id="send-button">Wyślij</button>
+        </div>
+        <div>
+            <h3>Edycja HTML:</h3>
+            <textarea id="html-editor"></textarea>
+        </div>
+        <button id="generate-pdf">Generuj PDF</button>
+    </div>
+    <script src="../js/chat.js"></script>
+</body>
+</html>

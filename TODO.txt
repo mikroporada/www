@@ -1,0 +1,5 @@
+dodaj model LLM do 3b, w elu interakcji z userem, ktory bedzie mogl w chat dostac odpowiedz i generowac pdf bezposrednio w oknire, bez przeladwoania
+pdf powinien byc renderowany wstepnie w html jako dokument do edycji a dopiero na zadanie generowany do pdf
+uzyj docker w celu utworzeni instancji ollama z aresem innym niz defualt pobeiranym z .env
+dodaj testy w celu sprawdzenia czy dziala workflow i zbuduj cli shell i api z curl
+uzywaj php
